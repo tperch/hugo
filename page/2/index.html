@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+    
+    <!-- <meta name="keywords" content="">
+    <meta name="description" content=""> -->
+  
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -184,458 +188,227 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/07/11/hello-world/" class="archive-article-date">
-        <time datetime="2020-07-11T07:57:40.286Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
 
-        </div>
-    	 
+  
+    <article id="post-十分钟快速搭建内网穿透工具 —— frp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
   
     <h1 itemprop="name">
 	
-	  <a class="archive-article-title" href="/2020/07/11/hello-world/" target="_blank">Hello World</a>
+	  <a class="article-title" href="/2020/01/15/%E5%8D%81%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7%20%E2%80%94%E2%80%94%20frp/" target="_blank">十分钟快速搭建内网穿透工具 —— frp</a>
   
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  
+<a href="/2020/01/15/%E5%8D%81%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7%20%E2%80%94%E2%80%94%20frp/" class="archive-article-date">
+        <time datetime="2020-01-14T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-15</time>
+</a>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><code>frp</code> 是一个可用于内网穿透的高性能的反向代理应用，支持 <code>tcp</code>，<code>udp</code>，<code>http</code>，<code>https</code>，<code>stcp</code> 协议。</li>
+<li><code>frp</code> 需要服务端和客户端共同作用，服务端为 <code>frps</code>，一般安装在 vps 服务器上；客户端为 <code>frpc</code>，一般安装在路由器或 NAS 上。</li>
+<li><code>frps</code> 和 <code>frpc</code> 配置使用，可以远程访问或控制内网设备。</li>
+</ul>
+<h2 id="frps-一键安装"><a href="#frps-一键安装" class="headerlink" title="frps 一键安装"></a>frps 一键安装</h2><p>为了节省精力，这里使用 <a href="https://github.com/clangcn/onekey-install-shell/tree/master/frps" target="_blank" rel="noopener">clangcn</a> 的一键安装脚本</p>
+<p>支持的平台：</p>
+<ul>
+<li>Centos 6/7 32/64bit</li>
+<li>Debian 6/7 32/64bit</li>
+<li>Ubuntu 14 32/64bit</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget --no-check-certificate https://raw.githubusercontent.com/clangcn/onekey-install-shell/master/frps/install-frps.sh -O ./install-frps.sh</span><br></pre></td></tr></table></figure>
+
+<p>修改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 700 ./install-frps.sh</span><br></pre></td></tr></table></figure>
+
+<p>开始安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./install-frps.sh install</span><br></pre></td></tr></table></figure>
+
+<p>安装过程选项的说明</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">说明</th>
+<th align="center">默认</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">download_url</td>
+<td align="center">frp 镜像源下载地址</td>
+<td align="center">aliyun</td>
+</tr>
+<tr>
+<td align="center">bind_port</td>
+<td align="center">frp 提供服务的端口</td>
+<td align="center">5443</td>
+</tr>
+<tr>
+<td align="center">vhost_http_port</td>
+<td align="center">http 服务端口</td>
+<td align="center">80</td>
+</tr>
+<tr>
+<td align="center">vhost_https_port</td>
+<td align="center">https 服务端口</td>
+<td align="center">443</td>
+</tr>
+<tr>
+<td align="center">dashboard_port</td>
+<td align="center">frps 仪表盘端口，用于查看 frp 工作状态</td>
+<td align="center">6443</td>
+</tr>
+<tr>
+<td align="center">dashboard_user</td>
+<td align="center">仪表盘登录账号</td>
+<td align="center">admin</td>
+</tr>
+<tr>
+<td align="center">dashboard_pwd</td>
+<td align="center">仪表盘登录密码</td>
+<td align="center">随机</td>
+</tr>
+<tr>
+<td align="center">token</td>
+<td align="center">frps 和 frpc 通讯密码</td>
+<td align="center">随机</td>
+</tr>
+<tr>
+<td align="center">max_pool_count</td>
+<td align="center">每个代理的连接上线</td>
+<td align="center">50</td>
+</tr>
+<tr>
+<td align="center">log_level</td>
+<td align="center">日志等级</td>
+<td align="center">info</td>
+</tr>
+<tr>
+<td align="center">log_max_days</td>
+<td align="center">日志保留天数</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">log_file</td>
+<td align="center">是否开启日志</td>
+<td align="center">enable</td>
+</tr>
+<tr>
+<td align="center">tcp_mux</td>
+<td align="center">是否开启多路复用，减少 tcp 的握手延迟</td>
+<td align="center">enable</td>
+</tr>
+<tr>
+<td align="center">kcp support</td>
+<td align="center">是否开启 kcp</td>
+<td align="center">enable</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意设置安全组或者防火墙</p>
+</blockquote>
+<h3 id="功能命令"><a href="#功能命令" class="headerlink" title="功能命令"></a>功能命令</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">frps start</td>
+<td align="center">启动</td>
+</tr>
+<tr>
+<td align="center">frps stop</td>
+<td align="center">停止</td>
+</tr>
+<tr>
+<td align="center">frps restart</td>
+<td align="center">重启</td>
+</tr>
+<tr>
+<td align="center">frps status</td>
+<td align="center">当前服务状态</td>
+</tr>
+<tr>
+<td align="center">frps config</td>
+<td align="center">vi 编辑配置</td>
+</tr>
+<tr>
+<td align="center">frps version</td>
+<td align="center">查看版本</td>
+</tr>
+<tr>
+<td align="center">install-frps.sh update</td>
+<td align="center">更新脚本</td>
+</tr>
+<tr>
+<td align="center">install-frps.sh uninstall</td>
+<td align="center">卸载</td>
+</tr>
+</tbody></table>
+<h2 id="fprc-配置"><a href="#fprc-配置" class="headerlink" title="fprc 配置"></a>fprc 配置</h2><p>客户端以 <code>Windows</code> 系统为例，路由器或者 NAS 的对照参考即可</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>在这里 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">frp</a> 下载对应 <code>frps</code> 的版本</p>
+<p>下载后只需要这三个文件即可</p>
+<ul>
+<li>frpc.exe</li>
+<li>frpc.ini</li>
+<li>frpc_full.ini</li>
+</ul>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>修改 <code>frpc.ini</code> 文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[common]</span></span><br><span class="line"><span class="string">server_addr</span> <span class="string">=</span> <span class="string">xxxxxx</span>    <span class="comment"># 服务器 IP</span></span><br><span class="line"><span class="string">server_port</span> <span class="string">=</span> <span class="number">5443</span>      <span class="comment"># bind_port</span></span><br><span class="line"><span class="string">token</span> <span class="string">=</span> <span class="string">xxxxxx</span>          <span class="comment"># 与服务器一致</span></span><br><span class="line"></span><br><span class="line"><span class="string">[test]</span></span><br><span class="line"><span class="string">type</span> <span class="string">=</span> <span class="string">http</span>             <span class="comment"># 类型</span></span><br><span class="line"><span class="string">local_ip</span> <span class="string">=</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>    <span class="comment"># 本地 IP</span></span><br><span class="line"><span class="string">local_port</span> <span class="string">=</span> <span class="number">80</span>         <span class="comment"># 本地端口</span></span><br><span class="line"><span class="string">use_encryption</span> <span class="string">=</span> <span class="literal">true</span>   <span class="comment"># 传输加密</span></span><br><span class="line"><span class="string">use_gzip</span> <span class="string">=</span> <span class="literal">true</span>         <span class="comment"># gzip 压缩</span></span><br><span class="line"><span class="string">custom_domains</span> <span class="string">=</span> <span class="string">xxxxxx</span> <span class="comment"># 自定义域名</span></span><br><span class="line"><span class="string">http_user</span> <span class="string">=</span> <span class="string">xxxxxx</span>      <span class="comment"># 可选，访问账号</span></span><br><span class="line"><span class="string">http_pwd</span> <span class="string">=</span> <span class="string">xxxxxx</span>       <span class="comment"># 可选，访问密码</span></span><br><span class="line"></span><br><span class="line"><span class="string">[test2]</span></span><br><span class="line"><span class="string">type</span> <span class="string">=</span></span><br><span class="line"><span class="string">local_ip</span> <span class="string">=</span></span><br><span class="line"><span class="string">local_port</span> <span class="string">=</span></span><br><span class="line"><span class="string">use_encryption</span> <span class="string">=</span></span><br><span class="line"><span class="string">use_gzip</span> <span class="string">=</span></span><br><span class="line"><span class="string">custom_domains</span> <span class="string">=</span></span><br><span class="line"><span class="string">http_user</span> <span class="string">=</span></span><br><span class="line"><span class="string">http_pwd</span> <span class="string">=</span></span><br><span class="line"></span><br><span class="line"><span class="string">log_file</span> <span class="string">=</span> <span class="string">/dev/null</span></span><br><span class="line"><span class="string">log_level</span> <span class="string">=</span> <span class="string">info</span></span><br><span class="line"><span class="string">log_max_days</span> <span class="string">=</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>打开 <code>cmd</code>，运行 <code>frpc.exe</code> 即可</p>
+<h2 id="Nginx-端口转发"><a href="#Nginx-端口转发" class="headerlink" title="Nginx 端口转发"></a>Nginx 端口转发</h2><p><code>80</code> 端口被 <code>Nginx</code> 占用的情况下，利用 <code>Nginx</code> 进行端口转发</p>
+<p>这里 <code>7080</code> 是 <code>frps</code> 的 <code>http</code> 服务端口</p>
+<p>添加站点文件 <code>test.conf</code>，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name www.cnguu.cn;</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">            proxy_pass http:&#x2F;&#x2F;127.0.0.1:7080;</span><br><span class="line">            proxy_redirect off;</span><br><span class="line">            proxy_set_header Host $host;</span><br><span class="line">            proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        &#125;</span><br><span class="line">        access_log off;</span><br><span class="line">        error_log &#x2F;dev&#x2F;null;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
   </div>
-</article>
-  
+  <div class="article-info article-info-index">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/07/11/%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5%EF%BC%8C%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E6%8E%8C%E6%8F%A12020%E5%B9%B4%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B0%E8%B6%8B%E5%8A%BF/" class="archive-article-date">
-        <time datetime="2020-07-11T07:50:03.491Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/07/11/%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5%EF%BC%8C%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E6%8E%8C%E6%8F%A12020%E5%B9%B4%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B0%E8%B6%8B%E5%8A%BF/" target="_blank">从理论到实践，一篇文章带你掌握2020年的设计新趋势</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/24/%E6%9B%BE%E7%BB%8F%E8%A2%AB%E4%BD%A0%E5%BF%BD%E7%95%A5%E6%8E%89%E7%9A%84%E2%80%9C%E5%AD%A6%E4%B9%A0%E9%80%9A%E2%80%9D/" class="archive-article-date">
-        <time datetime="2020-01-23T19:50:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/24/%E6%9B%BE%E7%BB%8F%E8%A2%AB%E4%BD%A0%E5%BF%BD%E7%95%A5%E6%8E%89%E7%9A%84%E2%80%9C%E5%AD%A6%E4%B9%A0%E9%80%9A%E2%80%9D/" target="_blank">曾经被你忽略掉的“学习通”</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">交互设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">产品分析</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">学习通</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/产品分析//" class="article-tag-list-link color5">产品分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/22/Git%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%93%E6%A0%87%E7%AD%BE%E7%9A%84/" class="archive-article-date">
-        <time datetime="2020-01-21T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/22/Git%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%93%E6%A0%87%E7%AD%BE%E7%9A%84/" target="_blank">Git 是如何打标签的</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网页</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网穿透</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">frp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/22/WordPress%E6%89%93%E5%BC%80%E5%8F%98%E6%85%A2%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="archive-article-date">
-        <time datetime="2020-01-21T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/22/WordPress%E6%89%93%E5%BC%80%E5%8F%98%E6%85%A2%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_blank">WordPress打开变慢原因及解决办法</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WordPress</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/建站知识//" class="article-tag-list-link color5">建站知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/21/2019-2020%E4%BD%9C%E5%93%81%E9%9B%86/" class="archive-article-date">
-        <time datetime="2020-01-20T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/21/2019-2020%E4%BD%9C%E5%93%81%E9%9B%86/" target="_blank">2019-2020作品集</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">作品集</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">交互设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/作品集//" class="article-tag-list-link color4">作品集</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/21/HTML%20%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%BE%88%E5%85%A8%EF%BC%89/" class="archive-article-date">
-        <time datetime="2020-01-20T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/21/HTML%20%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%BE%88%E5%85%A8%EF%BC%89/" target="_blank">HTML 基础篇（很全）</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/HTML//" class="article-tag-list-link color5">HTML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/18/WSL%20%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="archive-article-date">
-        <time datetime="2020-01-17T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/18/WSL%20%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_blank">WSL 下搭建前端开发环境</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网页</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">wsl</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -648,112 +421,498 @@
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/01/15/%E5%8D%81%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7%20%E2%80%94%E2%80%94%20frp/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/17/Git%20commit%20emoji%20%E9%A3%9F%E7%94%A8%E6%8C%87%E5%8D%97/" class="archive-article-date">
-        <time datetime="2020-01-16T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-17</time>
-</a>
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-打造自己最喜爱的 Windows10 —— 主题美化篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
   
     <h1 itemprop="name">
 	
-	  <a class="archive-article-title" href="/2020/01/17/Git%20commit%20emoji%20%E9%A3%9F%E7%94%A8%E6%8C%87%E5%8D%97/" target="_blank">Git commit emoji 食用指南</a>
+	  <a class="article-title" href="/2020/01/15/%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E6%9C%80%E5%96%9C%E7%88%B1%E7%9A%84%20Windows10%20%E2%80%94%E2%80%94%20%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E7%AF%87/" target="_blank">打造自己最喜爱的 Windows10 —— 主题美化篇</a>
   
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网页</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/15/CentOS7.6%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%20Git/" class="archive-article-date">
+  
+<a href="/2020/01/15/%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E6%9C%80%E5%96%9C%E7%88%B1%E7%9A%84%20Windows10%20%E2%80%94%E2%80%94%20%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E7%AF%87/" class="archive-article-date">
         <time datetime="2020-01-14T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-15</time>
 </a>
 
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/15/CentOS7.6%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%20Git/" target="_blank">CentOS7.6 编译安装最新版 Git</a>
   
-    </h1>
-  
+    
 
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><img src="https://cdn.jsdelivr.net/gh/cnguu/pic@master/20200123/7Li2cHGjXyuS6ra1.png" alt="打造自己最喜爱的 Windows10 —— 主题美化篇"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/cnguu/pic@master/20200123/xviba9mZVJTfASw6.png" alt="打造自己最喜爱的 Windows10 —— 主题美化篇"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/cnguu/pic@master/20200123/jCrcP3W8owSNzlxq.png" alt="打造自己最喜爱的 Windows10 —— 主题美化篇"></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>美化有风险，请提前备份好数据！</p>
+<p>为避免兼容问题，请保持系统最新版本！</p>
+<p>美化后，升级 Windows10 版本需先卸载主题破解补丁！</p>
+<p>本文以 Windows10 1909 为例！</p>
+<ul>
+<li>如果安装了 360 安全卫士 或金山毒霸，请卸载！</li>
+<li>创建系统还原点<ol>
+<li>同时按 Win 和 x，再按 y</li>
+<li>系统信息</li>
+<li>系统保护</li>
+<li>选中 C 盘</li>
+<li>配置</li>
+<li>启用系统保护</li>
+<li>最大使用量：21%（自由分配）</li>
+<li>确定</li>
+<li>自由输入名字</li>
+<li>创建</li>
+</ol>
+</li>
+<li>备份自己的数据</li>
+<li>关闭用户帐户控制（UAC）<ol>
+<li>同时按 Win 和 x，再按 y</li>
+<li>安全和维护</li>
+<li>更改用户账户控制设置</li>
+<li>从不通知</li>
+</ol>
+</li>
+</ul>
+<h2 id="主题破解补丁"><a href="#主题破解补丁" class="headerlink" title="主题破解补丁"></a>主题破解补丁</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><img src="https://cdn.jsdelivr.net/gh/cnguu/pic@master/20200123/gkIZOs48r16c9waA.png" alt="打造自己最喜爱的 Windows10 —— 主题美化篇"></p>
+<ol>
+<li>右键，以管理员身份运行</li>
+<li>Next</li>
+<li>勾选同意条款，Next</li>
+<li>I Agree</li>
+<li>记住当前 Themeui 和 Uxinit 的 Status</li>
+<li>Install</li>
+<li>Next</li>
+<li>Next</li>
+<li>重启系统，Finsh</li>
+</ol>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>重新打开安装程序，查看 Status 是否都是 <code>patched</code></p>
+<p>是则破解成功</p>
+<p>否则，需要取得管理员所得权</p>
+<h3 id="管理员所得权"><a href="#管理员所得权" class="headerlink" title="管理员所得权"></a>管理员所得权</h3><ol>
+<li>运行“添加管理员取得所有权到右键菜单.reg”</li>
+<li>打开 <code>C:\Windows\System32</code></li>
+<li>搜索 <code>Themeui.dll</code>，右键，管理员取得所有权</li>
+<li>同理搜添加 <code>Uxinit.dll</code></li>
+<li>重新执行安装</li>
+</ol>
+<h2 id="资源管理器调整工具"><a href="#资源管理器调整工具" class="headerlink" title="资源管理器调整工具"></a>资源管理器调整工具</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>解压 <code>OldNewExplorer</code> 文件夹至 C 盘根目录</li>
+<li>右键，以管理员身份运行 <code>OldNewExplorerCfg.exe</code></li>
+<li>仅勾选以下选项<ul>
+<li>使用经典驱动器分组</li>
+<li>使用库、并隐藏顶部文件夹</li>
+<li>使用工具栏代替功能区</li>
+<li>隐藏标题栏文字</li>
+<li>隐藏标题栏小图标</li>
+<li>隐藏返回上级目录按钮</li>
+</ul>
+</li>
+<li>安装</li>
+</ol>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><ol>
+<li>以蕾丝主题为例，直接点击下一步安装 <code>lovelace_TW10.exe</code></li>
+<li>快捷键 <code>Win+i</code> 打开系统设置 &gt;&gt; 个性化 &gt;&gt; 主题</li>
+<li>点击其中一个主题：<code>Pacman No Address Bar</code></li>
+<li>快捷键 <code>Win+e</code> 打开文件资源管理器 &gt;&gt; 工具 &gt;&gt; 文件夹选项 &gt;&gt; 查看 &gt;&gt; 取消勾选：始终显示菜单</li>
+</ol>
+<h2 id="开始菜单调整工具"><a href="#开始菜单调整工具" class="headerlink" title="开始菜单调整工具"></a>开始菜单调整工具</h2><h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>右键，以管理员身份运行 <code>StartIsBack2.9.exe</code></li>
+<li>为所有人安装</li>
+</ol>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li>右键开始菜单 &gt;&gt; 属性</li>
+<li>外观 &gt;&gt; 视觉样式：lovelace NA + Windows10 按钮</li>
+<li>自定义外观 &gt;&gt; 添加</li>
+<li>勾选：使用自定义开始菜单颜色 &gt;&gt; 透明度 0% &gt;&gt; 清除模糊</li>
+<li>勾选：使用自定义任务栏颜色 &gt;&gt; 透明度 0% &gt;&gt; 清除模糊</li>
+<li>勾选：隐藏用户账号图像</li>
+<li>自定义任务栏特效 &gt;&gt; 勾选：任务栏图标居中</li>
+<li>切换 &gt;&gt; 任务栏和开始菜单的上下文菜单样式：经典</li>
+</ol>
+<h2 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h2><ol>
+<li>打开 <code>7tsp GUI v0.6(2019).exe</code></li>
+<li>Add a Custom Pack：<code>7TSP Lumicons.7z</code></li>
+<li>Start Patchin（约 3 分钟）</li>
+<li>重启系统</li>
+</ol>
+<h2 id="托盘时间"><a href="#托盘时间" class="headerlink" title="托盘时间"></a>托盘时间</h2><ol>
+<li>安装字体 <code>DS-DIGI.TTF</code></li>
+<li>运行 <code>mytime.exe</code></li>
+<li>设置 &gt;&gt; 显示设置 &gt;&gt; 设置字体 &gt;&gt; 颜色：水绿色</li>
+</ol>
+<h2 id="网速监控"><a href="#网速监控" class="headerlink" title="网速监控"></a>网速监控</h2><ol>
+<li>运行 <code>TrafficMonitor.exe</code></li>
+<li>右键 &gt;&gt; 显示任务栏窗口、显示主窗口</li>
+<li>右键 &gt;&gt; 显示通知区域图标、显示 CPU 和内存利用率</li>
+<li>配置任务栏窗口<ul>
+<li>背景颜色选取任务栏</li>
+<li>透明色选取任务栏</li>
+<li>内存改为 RAM</li>
+<li>勾选：网速显示简洁模式</li>
+<li>勾选：水平排列</li>
+<li>勾选：任务栏窗口显示在任务栏的左侧</li>
+<li>勾选：指定每个项目颜色</li>
+<li>文本颜色<ul>
+<li>上传 - 标签：#57c0ff - 数值：#ff57ff</li>
+<li>下载 - 标签：#ff8057 - 数值：#00ff00</li>
+<li>CPU - 标签：#8057ff - 数值：#ffc000</li>
+<li>内存 - 标签：#00ffff - 数值：#a0ffc0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><blockquote>
+<p>感谢<a href="https://zhutix.com/" target="_blank" rel="noopener">致美化</a></p>
+</blockquote>
 
-        <div class="article-info info-on-right">
-          
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">软件</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">美化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">windows10</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/windows美化//" class="article-tag-list-link color5">windows美化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/01/15/%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E6%9C%80%E5%96%9C%E7%88%B1%E7%9A%84%20Windows10%20%E2%80%94%E2%80%94%20%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E7%AF%87/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="windows-win10开始菜单磁贴美化教程" class="article article-type-windows  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/12/24/win10%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E7%A3%81%E8%B4%B4%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/" target="_blank">win10开始菜单磁贴美化教程</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/12/24/win10%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E7%A3%81%E8%B4%B4%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2019-12-24T06:14:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="★前言"><a href="#★前言" class="headerlink" title="★前言"></a>★前言</h2><p>我们都知道，Windows 10在美化上可没有下足功夫，尤其是开始菜单的磁贴上。几年前，我们还觉得这种磁贴设计在大众面前焕然一新，可是近几年来，也没见磁贴有什么起色，除了不能自定义背景颜色外，图标也只能任性地接受应用程序本身的样子。Windows应用商店的图标虽然好看，但是大部分应用的功能又经不起推敲，无奈之下只能换回传统的Win32的应用程序……但是，在今天，你都可以和这一切说再见了，看了以下这篇文章后，你一定能找回属于磁贴原本的那一份美。</p>
+<blockquote>
+<p>在这篇文章当中，你将学到：<br>- 如何更改磁贴的背景颜色<br>- 如何更改磁贴的名称/隐藏磁贴的名称<br>- 如何更改磁贴的图标</p>
+</blockquote>
+<p>其中，以上所讲的磁贴除了我们一般固定到开始菜单，即传统Win32的应用程序的磁贴，还包括Windows应用商店下载得到UWP应用程序的磁贴，还有各类文件夹的磁贴，均可以修改。但是本篇教程中只针对传统Win32类型应用磁贴（exe格式，适合大部分应用程序），若想要为UWP应用或者文件夹快捷方式更改，请大家关注一下作者的文章哦~先让大家看看我的效果图吧：</p>
+<p><img src="http://image.coolapk.com/feed/2020/0320/16/653087_a09e4d2b_4227_2689@3000x2000.jpeg.m.jpg" alt="img"></p>
+<h2 id="★准备"><a href="#★准备" class="headerlink" title="★准备"></a>★准备</h2><p>在开始之前，我需要大家准备好所需要的工具，因为毕竟仅仅依靠系统是不能直接对菜单进行大刀阔斧地更改的，准备工具或网址如下：</p>
+<h3 id="Win10开始菜单磁贴美化工具（用于磁贴修改）"><a href="#Win10开始菜单磁贴美化工具（用于磁贴修改）" class="headerlink" title="- Win10开始菜单磁贴美化工具（用于磁贴修改）"></a>- Win10开始菜单磁贴美化工具（用于磁贴修改）</h3><blockquote>
+<p><strong>这个是本篇教程的核心，在这里提供作者的地址：</strong><br><strong>作者：X.I.U</strong><br><strong><a href="https://zhutix.com/tools/citie-mei/" target="_blank" rel="noopener">查看链接</a></strong><br><strong>当然大家如果有兴趣，也欢迎点击作者的官方教程：</strong><br><strong><a href="https://zhuanlan.zhihu.com/p/79630122" target="_blank" rel="noopener">查看链接</a></strong><br><strong><a href="https://www.52pojie.cn/thread-1122632-1-1.html" target="_blank" rel="noopener">查看链接</a></strong></p>
+</blockquote>
+<blockquote>
+<p><strong>- 一个可以下载图标的网站（用于修改图标样式）</strong><br><strong>这个是我自己找的网站，可以检索App Store苹果应用商店的图标：</strong><br><strong>只需在搜索框中输入关键词并回车即可，右键即可保存512x512的PNG大图标。</strong><br><strong><a href="http://plafer.info/icon-finder/#!/" target="_blank" rel="noopener">查看链接</a></strong></p>
+</blockquote>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>\1. 下载该作者的工具后解压，我们会得到如下文件：</p>
+<p><img src="http://image.coolapk.com/feed/2020/0320/16/653087_234e8e3a_4227_2691@1886x548.png.m.jpg" alt="img"></p>
+<p>\2. 我们目前仅需使用带Win图标的那一款工具即可；<br>\3. 右键 - 以管理员身份运行 - 若提示是否允许运行，点击「是」即可；<br>\4. 打开以后，我们会得到如下界面：</p>
+<p><img src="http://image.coolapk.com/feed/2020/0320/16/653087_5b086add_4227_2693@992x744.png.m.jpg" alt="img"></p>
+<p>\5. 作者已经很贴心地在每个按钮后面都添加了问号按钮，大家只要将鼠标移动到问号上即可查看相关说明；<br>\1. 我们需要找到你想要添加应用的快捷方式，它可以是来自开始菜单，也可以来自桌面。</p>
+<p>1) 若来自开始菜单，则在需要添加的应用程序右键 - 更多 - 打开文件位置即可找到，对应的即是快捷方式，如图所示：</p>
+<p><img src="http://image.coolapk.com/feed/2020/0320/16/653087_2700f821_4227_2694@1420x590.png.m.jpg" alt="img"></p>
+<p>2) 若来自桌面，那么桌面上显示的就是快捷方式。<br>\2. 将快捷方式手动拖动到「程序路径」后的文本框中，如图所示：</p>
+<p><img src="http://image.coolapk.com/feed/2020/0320/16/653087_d575656d_4227_2696@990x744.png.m.jpg" alt="img"></p>
+<p>\6. 修改任何你想要修改的内容</p>
+<p>1) 文件名称<br>即在磁贴下方或开始菜单显示的名称，可不修改，若认为影响美观可修改成自己喜欢的名字。</p>
+<p>2) 磁贴不显示文字<br>若无自定义图标，建议不勾选，因为默认图标的尺寸较小，若拥有自定义背景的资源，可以勾选，可避免文字破坏磁贴的美感，可自行决定。</p>
+<p>3) 文字颜色<br>视背景颜色而定，一般情况下若勾选下方「只能识别文字颜色」或自动调整，若想手动调整也可以。若勾选了「磁贴不显示文字」，则无影响。</p>
+<p>4) 背景颜色<br>可手动调整磁贴的背景颜色，一种通过直接修改RGB值，一种则通过右侧选择缺省的颜色，点击「设为默认」后，后续导入的磁贴都将采用这种颜色。</p>
+<p>5) 大图背景和小图背景<br>如上浏览所示，可以设置为中等磁贴大小和小磁贴大小时候的样子，只需将相关的PNG图片拖到相关文本框中即可，无须担心图片位置，它会自动在根目录自动生成对应的图片的。</p>
+<p>6) 图标位置<br>必须选择后缀名为ICO的图标文件，若只想设置开始菜单磁贴相关，可以不用填写。<br>最后，我的设置是这样的（供参考）：</p>
+<p><img src="http://image.coolapk.com/feed/2020/0320/16/653087_2dcb708e_4227_2698@992x740.png.m.jpg" alt="img"></p>
+<p>\7. 最后我们点击「添加/更新磁贴」即可，我们就可以在开始菜单看到我们刚刚添加的磁贴啦。</p>
+<p><img src="http://image.coolapk.com/feed/2020/0320/16/653087_ad025e4e_4227_27@1938x1404.png.m.jpg" alt="img"></p>
+<p>至此，教程结束，对于大部分的应用程序，相信大家都能美化了吧~</p>
+<h2 id="★尾巴"><a href="#★尾巴" class="headerlink" title="★尾巴"></a>★尾巴</h2><p>对于大多数的应用程序当中，我们都能找到对应的图标，但是对于Photoshop或Premiere这种没有特定的图标来说，应该怎么办呢？这就需要各位动动脑子画出属于自己的图标了。当然也可以求省事，直接将磁贴背景修改为图标内相关的颜色，如上图所示，这种搭配个人还是挺喜欢的，但美术功底有限，就只能做到这样的搭配，相信有能力的人一定能画出非常棒的图标来~</p>
+<p>最近，已经有相关新闻报道了Windows10一款全新的开始菜单，据说可能会抛弃磁贴的设计，不知道大家对这种设计是否留念呢（尤其是当自己可以自定义这些磁贴以后）？</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">软件</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">美化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">windows10</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/windows美化//" class="article-tag-list-link color5">windows美化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/12/24/win10%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E7%A3%81%E8%B4%B4%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Fantasy-field：一款二次元风格的轻量级微博图床程序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/11/25/Fantasy-field%EF%BC%9A%E4%B8%80%E6%AC%BE%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E%E6%A0%BC%E7%9A%84%E8%BD%BB%E9%87%8F%E7%BA%A7%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A%E7%A8%8B%E5%BA%8F/" target="_blank">Fantasy-field：一款二次元风格的轻量级微博图床程序</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/11/25/Fantasy-field%EF%BC%9A%E4%B8%80%E6%AC%BE%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E%E6%A0%BC%E7%9A%84%E8%BD%BB%E9%87%8F%E7%BA%A7%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A%E7%A8%8B%E5%BA%8F/" class="archive-article-date">
+        <time datetime="2019-11-25T05:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>说明：</strong>博主最近分享了好几款图床程序，这里再分享个<code>Fantasy-field</code>(幻想领域)，一款基于新浪的<code>PHP</code>图床程序，界面风格和国外比较火的<code>Chevereto</code>差不多，都挺好看的，也支持用户注册，限制游客上传等功能，上传的图片会保存在新浪图床，可以为小内存<code>VPS</code>节省很多空间。对图床的美观有要求，也想节省空间的人来说，貌似是个挺好的选择。</p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><a href="https://www.moerats.com/usr/picture/Fantasy-field(1).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Fantasy-field(1).png" alt=""></a><br><a href="https://www.moerats.com/usr/picture/Fantasy-field(2).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Fantasy-field(2).png" alt=""></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在幻想领域中，图床图片全部托管在新浪云，每张图片都有多张不同级别的缩略图，这便是幻想领域的最大特色之一。</p>
+<p>拥有较为完善的用户系统与管理员系统。管理员在后台拥有完全权限，对网站的一切基本配置。</p>
+<p>我的图库，将会罗列出用户自己所上传的所有图片。管理员则显示系统托管的所有图片。你可以在这里对图片进行删除、预览或者复制它，但删除仅仅只是不再出现在本系统中，图片仍然是存在于新浪之上，这点你是要知道的。</p>
+<p>探索，它是前台对用户图片预览的功能，在这里你可以发现和找到你需要的东西。如果你不需要它，可以在后台进行关闭设置。</p>
+<p>上传新浪图床并非无要求，它需要你进行登录验证，但我们拥有一套独立的新浪登录程序，不依赖任何扩展，并且无验证码，<code>cookie</code>过期将自动为你进行登录，为你解决一切后顾之忧，所以你必须在后台设置你的新浪账号密码才能正常使用。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><strong>Github地址：</strong><a href="https://github.com/178146582/Fantasy-field" target="_blank" rel="noopener">https://github.com/178146582/Fantasy-field</a></p>
+<p><strong>环境要求：</strong><code>PHP ≥ 5.6</code>、<code>Nginx</code>/<code>Apache</code>、<code>Mysql</code></p>
+<p><strong>1、搭建环境</strong><br>搭建方法很多，可以使用军哥的<code>LNMP</code>→<a href="https://lnmp.org/install.html" target="_blank" rel="noopener">传送门</a>、<code>OneinStack</code>→<a href="https://oneinstack.com/install/" target="_blank" rel="noopener">传送门</a>、宝塔面板→<a href="https://www.moerats.com/archives/778/" target="_blank" rel="noopener">使用教程</a>，小白和不想折腾的建议直接宝塔面板。</p>
+<p><strong>2、安装程序</strong><br>先添加域名和新建一个数据库，如果你是<code>Nginx</code>，还需要添加伪静态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">    try_files $uri $uri&#x2F; &#x2F;index.php?$query_string;</span><br><span class="line">&#125;</span><br><span class="line">#或者</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line"> if (!-d $request_filename)&#123;</span><br><span class="line"> set $rule_0 1$rule_0;</span><br><span class="line"> &#125;</span><br><span class="line"> if (!-f $request_filename)&#123;</span><br><span class="line"> set $rule_0 2$rule_0;</span><br><span class="line"> &#125;</span><br><span class="line">if ($rule_0 &#x3D; &quot;21&quot;)&#123;</span><br><span class="line"> rewrite ^&#x2F;(.*)$ &#x2F;index.php?&#x2F;$1 last;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后下载最新版<code>Fantasy-field</code>程序→<a href="https://github.com/178146582/Fantasy-field/archive/master.zip" target="_blank" rel="noopener">点击下载</a>，再放到您的站点根目录并解压。访问<code>http://xx.com/install.php</code>安装即可，注意安装的时候，设置管理员用户名别带特殊符号，不然到时候会登录不进去，后台地址：<code>http://xx.com/admin</code>。</p>
+<h2 id="相关修改"><a href="#相关修改" class="headerlink" title="相关修改"></a>相关修改</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#大部分都可以直接在后台修改，少部分需要通过文件修改</span><br><span class="line">版权文件：&#x2F;application&#x2F;controller&#x2F;Home&#x2F;IndexController.class.php，需解密，不过最好保留下方的版权</span><br><span class="line">首页背景图片：&#x2F;application&#x2F;view&#x2F;Home&#x2F;style&#x2F;main.css</span><br><span class="line">背景图片嵌入代码：&#x2F;application&#x2F;view&#x2F;Home&#x2F;details.php</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#邮件发送失败</span><br><span class="line">1、先确定你的25端口是否被封禁，如果封掉，尝试让主机商启用(如果不启用就换服务器)</span><br><span class="line">2、关掉注册验证或者等下个版本更新（注：改端口是没有用的，465端口需要ssl支持）</span><br><span class="line"></span><br><span class="line">#数据接口异常</span><br><span class="line">1、伪静态重定向失败，请参考上方的再做设置</span><br><span class="line">2、如果是nginx服务器， 找到路径&#x2F;framework&#x2F;core&#x2F;Framework.php第51行到第53行注释或者删除，</span><br><span class="line">3、具体代码如下(一般Apache服务器不会遇到这个问题，只有nginx的服务器才会)</span><br><span class="line">if ($path !&#x3D; &#39;&#39;) &#123;</span><br><span class="line">$path &#x3D; strstr(trim($_SERVER[&#39;REQUEST_URI&#39;],&#39;&#x2F;&#39;),$path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#上传图片失败，如提示：上传时发生了点小插曲，请打开控制器查看原因！</span><br><span class="line">1、检查新浪账号密码是否正确</span><br><span class="line">2、手动登录一次网页版新浪微博</span><br><span class="line">3、新浪账号是否有发微博权限</span><br><span class="line">4、配置成功后不允许在登录新浪任何平台(推荐使用小号)</span><br><span class="line"></span><br><span class="line">#除新浪限制以外，上传图片还取决于服务器配置，请尝试修改以上配置信息进行解决</span><br><span class="line">最大上传限制（upload_max_filesize）</span><br><span class="line">允许上传文件最大数（max_file_uploads）</span><br><span class="line">脚本最大执行时长（max_execution_time）</span><br><span class="line">脚本最大消耗内存（memory_limit）</span><br><span class="line">脚本最大解析时长 （max_input_time）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#验证码错误，如：明明登录的图像验证码输入是正确的，却一直提示验证码错误</span><br><span class="line">1、查看php.ini配置中ESSINON目录是否存在</span><br><span class="line">2、如果不存在则新建目录，如果存在则检查读写权限</span><br><span class="line"></span><br><span class="line">#配置文件无法保存</span><br><span class="line">检查程序目录是否有读写权限</span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络资源</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">建站知识</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -761,38 +920,985 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网页</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图床</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        			<a href="/categories/建站知识//" class="article-tag-list-link color5">建站知识</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/11/25/Fantasy-field%EF%BC%9A%E4%B8%80%E6%AC%BE%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E%E6%A0%BC%E7%9A%84%E8%BD%BB%E9%87%8F%E7%BA%A7%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A%E7%A8%8B%E5%BA%8F/">展开全文 >></a>
+    </p>
+    
 
     
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-AUXPI：一个简单的API图床程序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/10/29/AUXPI%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84API%E5%9B%BE%E5%BA%8A%E7%A8%8B%E5%BA%8F/" target="_blank">AUXPI：一个简单的API图床程序</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/10/29/AUXPI%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84API%E5%9B%BE%E5%BA%8A%E7%A8%8B%E5%BA%8F/" class="archive-article-date">
+        <time datetime="2019-10-29T05:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-29</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>说明：</strong>对于图床程序的话，博主之前介绍过好几种，查看：<a href="https://github.com/aimerforreimu/auxpi/releases" target="_blank" rel="noopener">Chevereto</a>、<a href="https://www.moerats.com/usr/picture/AUXPI(1).png" target="_blank" rel="noopener">ImgURL</a>。貌似最火的还是国外的<code>Chevereto</code>，这里再分享个图床程序<code>AUXPI</code>，和<code>ImgURL</code>比较类似，都支持<code>API</code>上传，<code>SMMS</code>图床上传。不过该图床还处于发育初期阶段，貌似以后会越来越强，可以期待下。</p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><a href="https://www.moerats.com/usr/picture/AUXPI(1).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/AUXPI(1).png" alt=""></a><br><a href="https://www.moerats.com/usr/picture/AUXPI(2).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/AUXPI(2).png" alt=""></a><br><a href="https://www.moerats.com/usr/picture/AUXPI(3).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/AUXPI(3).png" alt=""></a><br><a href="https://www.moerats.com/usr/picture/AUXPI(4).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/AUXPI(4).png" alt=""></a></p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">【2019.3.29】</span><br><span class="line">该程序变动较大，支持更多图床，新增后台，用户注册等功能，安装环境多了个Mysql，更新安装方法</span><br></pre></td></tr></table></figure>
+
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">支持web上传图片    </span><br><span class="line">支持API上传图片    </span><br><span class="line">支持图床：</span><br><span class="line">搜狗</span><br><span class="line">新浪(私有+公共)</span><br><span class="line">SMMS</span><br><span class="line">奇虎(360)</span><br><span class="line">百度</span><br><span class="line">阿里</span><br><span class="line">京东</span><br><span class="line">Upload.cc</span><br><span class="line">Flickr</span><br><span class="line">网易</span><br><span class="line">掘金</span><br><span class="line">本地</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><strong>Github地址：</strong><a href="https://github.com/aimerforreimu/AUXPI" target="_blank" rel="noopener">https://github.com/aimerforreimu/AUXPI</a></p>
+<p><strong>所需环境：</strong><code>Mysql</code>、<code>Redis</code>、<code>Nginx</code>/<code>Caddy</code>(非必需，但如果你要使用域名访问就需要安装了)。</p>
+<p><strong>1、安装Web环境</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#CentOS系统</span><br><span class="line">wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install_6.0.sh &amp;&amp; sh install.sh</span><br><span class="line">#Ubuntu系统</span><br><span class="line">wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br><span class="line">#Debian系统</span><br><span class="line">wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install-ubuntu_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，进入面板，点击左侧软件管理，然后安装<code>Mysql</code>、<code>Redis</code>、<code>Nginx</code>(如果你使用域名的话，就需要安装)。</p>
+<p>然后点击左侧数据库-添加数据库，设置好数据库信息。</p>
+<p><strong>2、安装AUXPI</strong><br>首先进入到<code>Release</code>→<a href="https://github.com/aimerforreimu/auxpi/releases" target="_blank" rel="noopener">传送门</a>，下载最新版的<code>Linux</code>系统<code>AUXPI</code>文件，目前为<code>V2.3.9</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#新建文件夹用来存放auxpi文件</span><br><span class="line">mkdir auxpi &amp;&amp; cd auxpi</span><br><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;aimerforreimu&#x2F;auxpi&#x2F;releases&#x2F;download&#x2F;2.3.9&#x2F;auxpi-2.3.9-linux.tar.gz</span><br><span class="line">#解压并移动文件</span><br><span class="line">tar zxvf auxpi*.tar.gz &amp;&amp; rm -rf auxpi*.tar.gz</span><br><span class="line">mv build&#x2F;linux&#x2F;* .&#x2F;</span><br><span class="line">rm -rf build</span><br></pre></td></tr></table></figure>
+
+<p>然后编辑配置文件<code>conf/siteConfig.json</code>，修改如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;site_name&quot;: &quot;AuXpI API 图床&quot;,  #站点名称    </span><br><span class="line">  &quot;site_footer&quot;: &quot;&quot;,  #footer输出的内容</span><br><span class="line">  &quot;site_url&quot;: &quot;http:&#x2F;&#x2F;yoursite.com&#x2F;&quot;,  #站点url</span><br><span class="line">  &quot;logo&quot;:&quot;&#x2F;static&#x2F;app&#x2F;images&#x2F;logo.jpg&quot;,  #站点logo</span><br><span class="line">  &quot;site_upload_max_number&quot;: 10,  #一次性最多可以上传多少张图片</span><br><span class="line">  &quot;site_up_load_max_size&quot;: 5,  #最大允许上传的图片大小，单位MB</span><br><span class="line">  &quot;allow_tourists&quot;:false,  #访客上传，false为关闭，ture为开启</span><br><span class="line">  &quot;allow_register&quot;:false,  #用户注册，false为关闭，ture为开启</span><br><span class="line">  &quot;db_option&quot;: &#123;</span><br><span class="line">      &quot;use_db&quot;: true,     </span><br><span class="line">      &quot;db_type&quot;: &quot;mysql&quot;,       </span><br><span class="line">      &quot;db_host&quot;: &quot;127.0.0.1:3306&quot;,  #数据库地址，正常不需要修改</span><br><span class="line">      &quot;db_name&quot;: &quot;auxpi&quot;,  #数据库名称</span><br><span class="line">      &quot;db_user&quot;: &quot;root&quot;,  #数据库用户名</span><br><span class="line">      &quot;db_pass&quot;: &quot;moerats&quot;,  #数据库密码</span><br><span class="line">      &quot;table_prefix&quot;: &quot;auxpi_&quot;  #数据表前缀，可不修改</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>再配置<code>conf/app.conf</code>文件，修改数据库信息，其它看着办，大致如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#程序默认运行端口和运行模式，端口可以默认2333</span><br><span class="line">httpport &#x3D; 2333</span><br><span class="line">#运行模式必须修改为prod</span><br><span class="line">runmode &#x3D; prod</span><br><span class="line"></span><br><span class="line">#数据库设置信息</span><br><span class="line">dbType &#x3D; mysql</span><br><span class="line">dbName &#x3D; auxpi</span><br><span class="line">dbUser &#x3D; root</span><br><span class="line">dbPassword &#x3D; moerats</span><br><span class="line">dbHost &#x3D; 127.0.0.1:3306</span><br><span class="line">dbPrefix &#x3D; auxpi_</span><br></pre></td></tr></table></figure>
+
+<p>接下来继续使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#初始化</span><br><span class="line">chmod -u+x auxpi</span><br><span class="line">.&#x2F;auxpi init</span><br><span class="line">#创建数据表</span><br><span class="line">.&#x2F;auxpi migrate</span><br></pre></td></tr></table></figure>
+
+<p>创建管理员账户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#以下命令会给你创建一个用户名RATS，邮箱admin@moerats.com，密码moerats的管理员账户，请自行修改</span><br><span class="line">.&#x2F;auxpi -mod&#x3D;admin -name&#x3D;RATS -email&#x3D;admin@moerats.com -pass&#x3D;moerats</span><br></pre></td></tr></table></figure>
+
+<p>开始运行程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#CentOS系统</span><br><span class="line">yum install screen -y</span><br><span class="line">#Debian&#x2F;Ubuntu系统</span><br><span class="line">apt install screen -y</span><br><span class="line"></span><br><span class="line">#后台运行</span><br><span class="line">screen -dmS auxpi .&#x2F;auxpi run</span><br></pre></td></tr></table></figure>
+
+<p>运行成功后使用<code>IP:2333</code>进行访问，如果站点打不开，可能需要开启防火墙，点击面板左侧-安全，放行<code>2333</code>端口即可。</p>
+<p><strong>3、域名反代</strong><br>点击左侧网站-添加站点，然后再点击添加好了的域名名称，这时候就进入了站点配置，点击反向代理-添加反向代理，目标<code>URL</code>填入<code>http://127.0.0.1:2333</code>，再提交即可。如果要启用<code>https</code>访问的，点击<code>SSL</code>，申请<code>Let&#39;s Encrypt</code>，强制<code>https</code>访问即可。</p>
+<p>最后点击域名设置-反向代理-配置文件，删掉以下两行代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add_header X-Cache $upstream_cache_status;</span><br><span class="line">expires 12h;</span><br></pre></td></tr></table></figure>
+
+<p>再重启<code>Nginx</code>即可。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络资源</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">建站知识</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图床</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">资源分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/建站知识//" class="article-tag-list-link color5">建站知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/29/AUXPI%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84API%E5%9B%BE%E5%BA%8A%E7%A8%8B%E5%BA%8F/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Shiori：一个简单、美观且带Web界面的书签管理器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/28/Shiori%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E3%80%81%E7%BE%8E%E8%A7%82%E4%B8%94%E5%B8%A6Web%E7%95%8C%E9%9D%A2%E7%9A%84%E4%B9%A6%E7%AD%BE%E7%AE%A1%E7%90%86%E5%99%A8/" target="_blank">Shiori：一个简单、美观且带Web界面的书签管理器</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/28/Shiori%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E3%80%81%E7%BE%8E%E8%A7%82%E4%B8%94%E5%B8%A6Web%E7%95%8C%E9%9D%A2%E7%9A%84%E4%B9%A6%E7%AD%BE%E7%AE%A1%E7%90%86%E5%99%A8/" class="archive-article-date">
+        <time datetime="2019-09-28T05:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-28</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>说明：</strong><code>Shiori</code>是一个用<code>Go</code>语言编写的简单书签管理器，样式直接模仿的<code>Pocket</code>，有着基本书签管理功能，即添加，编辑，删除和搜索。支持导入和导出成<code>Netscape</code>书签文件，也可以从<code>Pocket</code>导入书签。可以通过命令行操作，也自带简单而漂亮的<code>Web</code>界面，适合那些不想使用命令行的，也可以内页浏览书签首页，用起来还行，这里就分享下。</p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><a href="https://www.moerats.com/usr/picture/Shiori(1).jpg" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Shiori(1).jpg" alt=""></a><br><a href="https://www.moerats.com/usr/picture/Shiori(3).jpg" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Shiori(3).jpg" alt=""></a><br><a href="https://www.moerats.com/usr/picture/Shiori(2).jpg" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Shiori(2).jpg" alt=""></a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><strong>Github地址：</strong><a href="https://github.com/go-shiori/shiori" target="_blank" rel="noopener">https://github.com/go-shiori/shiori</a></p>
+<p><strong>1、安装Docker</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#CentOS 6</span><br><span class="line">rpm -iUvh http:&#x2F;&#x2F;dl.fedoraproject.org&#x2F;pub&#x2F;epel&#x2F;6&#x2F;x86_64&#x2F;epel-release-6-8.noarch.rpm</span><br><span class="line">yum update -y</span><br><span class="line">yum -y install docker-io</span><br><span class="line">service docker start</span><br><span class="line">chkconfig docker on</span><br><span class="line"></span><br><span class="line">#CentOS 7、Debian、Ubuntu</span><br><span class="line">curl -sSL https:&#x2F;&#x2F;get.docker.com&#x2F; | sh</span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、拉取镜像</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name shiori --restart&#x3D;always -p 8080:8080 -v ~&#x2F;shiori:&#x2F;srv&#x2F;shiori radhifadlillah&#x2F;shiori</span><br></pre></td></tr></table></figure>
+
+<p>安装好了后，访问地址：<code>http://ip:8080</code>，初始管理员用户名和密码为<code>shiori</code>和<code>gopher</code>。</p>
+<p>如果<code>CentOS</code>系统打不开的话，可能还需要开启<code>8080</code>端口，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#CentOS 6</span><br><span class="line">iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</span><br><span class="line">service iptables save</span><br><span class="line">service iptables restart</span><br><span class="line"></span><br><span class="line">#CentOS 7</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;8080&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>像阿里云等服务器，还需要去安全组那里开放下端口。</p>
+<p>最后你想绑定域名，那么就进行第<code>3</code>步，直接<code>ip</code>访问就不用绑定了。</p>
+<p><strong>3、绑定域名</strong><br>安装<code>Caddy</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ToyoDAdoubiBackup&#x2F;doubi&#x2F;master&#x2F;caddy_install.sh &amp;&amp; chmod +x caddy_install.sh &amp;&amp; bash caddy_install.sh</span><br><span class="line">#备用地址</span><br><span class="line">wget -N --no-check-certificate https:&#x2F;&#x2F;www.moerats.com&#x2F;usr&#x2F;shell&#x2F;Caddy&#x2F;caddy_install.sh &amp;&amp; chmod +x caddy_install.sh &amp;&amp; bash caddy_install.sh</span><br></pre></td></tr></table></figure>
+
+<p>配置<code>Caddy</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#以下全部内容是一个整体，请修改域名后一起复制到SSH运行！</span><br><span class="line"></span><br><span class="line">#http访问，该配置不会自动签发SSL</span><br><span class="line">echo &quot;www.moerats.com &#123;</span><br><span class="line"> gzip</span><br><span class="line"> proxy &#x2F; 127.0.0.1:8080 &#123;</span><br><span class="line">    header_upstream Host &#123;host&#125;</span><br><span class="line">    header_upstream X-Real-IP &#123;remote&#125;</span><br><span class="line">    header_upstream X-Forwarded-For &#123;remote&#125;</span><br><span class="line">    header_upstream X-Forwarded-Port &#123;server_port&#125;</span><br><span class="line">    header_upstream X-Forwarded-Proto &#123;scheme&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&quot; &gt; &#x2F;usr&#x2F;local&#x2F;caddy&#x2F;Caddyfile</span><br><span class="line"></span><br><span class="line">#https访问，该配置会自动签发SSL，请提前解析域名到VPS服务器</span><br><span class="line">echo &quot;www.moerats.com &#123;</span><br><span class="line"> gzip</span><br><span class="line"> tls admin@moerats.com</span><br><span class="line"> proxy &#x2F; 127.0.0.1:8080 &#123;</span><br><span class="line">    header_upstream Host &#123;host&#125;</span><br><span class="line">    header_upstream X-Real-IP &#123;remote&#125;</span><br><span class="line">    header_upstream X-Forwarded-For &#123;remote&#125;</span><br><span class="line">    header_upstream X-Forwarded-Port &#123;server_port&#125;</span><br><span class="line">    header_upstream X-Forwarded-Proto &#123;scheme&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&quot; &gt; &#x2F;usr&#x2F;local&#x2F;caddy&#x2F;Caddyfile</span><br></pre></td></tr></table></figure>
+
+<p><code>tls</code>参数会自动帮你签发<code>ssl</code>证书，如果你要使用自己的<code>ssl</code>，改为<code>tls /root/xx.crt /root/xx.key</code>即可，后面为<code>ssl</code>证书路径。</p>
+<p>启动<code>Caddy</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;caddy start</span><br></pre></td></tr></table></figure>
+
+<p>就可以打开域名进行访问了。</p>
+<p>最后由于没有修改管理员默认账号和用户名的地方，可以直接去设置处添加一个用户，那么该用户默认会成为管理员，此前的管理员会被停用。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络资源</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">建站知识</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书签</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/建站知识//" class="article-tag-list-link color5">建站知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/28/Shiori%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E3%80%81%E7%BE%8E%E8%A7%82%E4%B8%94%E5%B8%A6Web%E7%95%8C%E9%9D%A2%E7%9A%84%E4%B9%A6%E7%AD%BE%E7%AE%A1%E7%90%86%E5%99%A8/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-BYR-Navi：一个开源、美观且可以部署在GitHub Pages的网站导航程序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/27/BYR-Navi%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E3%80%81%E7%BE%8E%E8%A7%82%E4%B8%94%E5%8F%AF%E4%BB%A5%E9%83%A8%E7%BD%B2%E5%9C%A8GitHub%20Pages%E7%9A%84%E7%BD%91%E7%AB%99%E5%AF%BC%E8%88%AA%E7%A8%8B%E5%BA%8F/" target="_blank">BYR-Navi：一个开源、美观且可以部署在GitHub Pages的网站导航程序</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/27/BYR-Navi%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E3%80%81%E7%BE%8E%E8%A7%82%E4%B8%94%E5%8F%AF%E4%BB%A5%E9%83%A8%E7%BD%B2%E5%9C%A8GitHub%20Pages%E7%9A%84%E7%BD%91%E7%AB%99%E5%AF%BC%E8%88%AA%E7%A8%8B%E5%BA%8F/" class="archive-article-date">
+        <time datetime="2019-09-27T05:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>说明：</strong><code>BYR-Navi</code>是一个开源、轻量使用<code>Fomantic UI Web</code>框架构建的网站导航程序，样式也非常美观，而且支持从<code>N</code>个站点直接搜索，我们既可以部署在自己的服务器上，又可以部署在<code>GitHub Pages</code>，后者无需服务器，这里水个稍微完整点的教程，有需求的可以搭建个玩玩。</p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><a href="https://www.moerats.com/usr/picture/BYR-Navi(1).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/BYR-Navi(1).png" alt=""></a><br><a href="https://www.moerats.com/usr/picture/BYR-Navi(2).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/BYR-Navi(2).png" alt=""></a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><strong>演示地址：</strong><a href="https://byr-navi.com/" target="_blank" rel="noopener">https://byr-navi.com</a></p>
+<p><strong>Github地址：</strong><a href="https://github.com/BYR-Navi/BYR-Navi" target="_blank" rel="noopener">https://github.com/BYR-Navi/BYR-Navi</a></p>
+<p><strong>1、安装Ruby</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#导入密钥</span><br><span class="line">gpg --keyserver hkp:&#x2F;&#x2F;keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB</span><br><span class="line">#安装稳定版</span><br><span class="line">curl -sSL https:&#x2F;&#x2F;get.rvm.io | bash -s stable</span><br><span class="line">#载入RVM环境</span><br><span class="line">source &#x2F;etc&#x2F;profile.d&#x2F;rvm.sh</span><br><span class="line">#安装Ruby 2.6.3</span><br><span class="line">rvm install ruby 2.6.3</span><br><span class="line">#设置为默认版本</span><br><span class="line">rvm use 2.6.3 --default</span><br></pre></td></tr></table></figure>
+
+<p>导入期间出现使用<code>No dirmngr</code>报错的话，使用<code>apt install dirmngr</code>，然后重新导入即可。</p>
+<p><strong>2、安装Jekyll</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install jekyll</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、安装BYR-Navi</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#拉取源码</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;BYR-Navi&#x2F;BYR-Navi</span><br><span class="line">#安装依赖</span><br><span class="line">cd BYR-Navi</span><br><span class="line">bundle i</span><br></pre></td></tr></table></figure>
+
+<p>如果第一步提示<code>-bash: git: command not found</code>，可以先使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#CentOS</span><br><span class="line">yum -y install git</span><br><span class="line">#Debian、Ubuntu</span><br><span class="line">apt install git -y</span><br></pre></td></tr></table></figure>
+
+<p>然后修改配置文件_config.yml，对照原信息，自行修改导航标题，关键词等描述，更深层次的修改可参考官方文档→<a href="https://jekyllrb.com/docs/configuration/" target="_blank" rel="noopener">传送门</a>。</p>
+<p>再进入<code>_data</code>文件夹，新增/修改大致导航网站链接，可参考上面的演示地址修改，最后还一个就是统计配置文件<code>analytics.yml</code>，这个需要我们额外安装<code>Matomo</code>，安装和配置可以提前看文章后面。</p>
+<p>都修改完成后，启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#运行端口为8989，自行修改</span><br><span class="line">bundle exec jekyll serve -H 0.0.0.0 -P 8989 --detach</span><br></pre></td></tr></table></figure>
+
+<p>此时就可以使用<code>ip:8989</code>访问程序了。</p>
+<p>如果<code>CentOS</code>系统打不开的话，可能还需要开启<code>8989</code>端口，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#CentOS 6</span><br><span class="line">iptables -I INPUT -p tcp --dport 8989 -j ACCEPT</span><br><span class="line">service iptables save</span><br><span class="line">service iptables restart</span><br><span class="line"></span><br><span class="line">#CentOS 7</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;8989&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>像阿里云等服务器，还需要去安全组那里开放下端口。</p>
+<p>这里除了可以使用命令行启动，也可以直接将生成的<code>_site</code>文件夹丢到网站根目录访问。</p>
+<p>如果要修改导航相关页面的信息显示的话，也可以在<code>_site</code>文件夹中修改。</p>
+<h2 id="安装Matomo"><a href="#安装Matomo" class="headerlink" title="安装Matomo"></a>安装Matomo</h2><p><strong>官方网站：</strong><a href="https://matomo.org/" target="_blank" rel="noopener">https://matomo.org</a></p>
+<p>这个安装教程博主很久前水过，不过是手动的，有点复杂，这里就直接找了个配置比较简单的<code>Docker</code>镜像进行安装。</p>
+<p><strong>Docker地址：</strong><a href="https://github.com/crazy-max/docker-matomo" target="_blank" rel="noopener">https://github.com/crazy-max/docker-matomo</a></p>
+<p><strong>1、安装Docker</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#CentOS 6</span><br><span class="line">rpm -iUvh http:&#x2F;&#x2F;dl.fedoraproject.org&#x2F;pub&#x2F;epel&#x2F;6&#x2F;x86_64&#x2F;epel-release-6-8.noarch.rpm</span><br><span class="line">yum update -y</span><br><span class="line">yum -y install docker-io</span><br><span class="line">service docker start</span><br><span class="line">chkconfig docker on</span><br><span class="line"></span><br><span class="line">#CentOS 7、Debian、Ubuntu</span><br><span class="line">curl -sSL https:&#x2F;&#x2F;get.docker.com&#x2F; | sh</span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、拉取镜像</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#拉取Matomo镜像</span><br><span class="line">docker run --restart&#x3D;always -d --name matomo \</span><br><span class="line">-p 8000:8000 \</span><br><span class="line">-v ~&#x2F;matomo&#x2F;data:&#x2F;data \</span><br><span class="line">crazymax&#x2F;matomo</span><br><span class="line"></span><br><span class="line">#拉取Mysql镜像，记得修改数据库信息，如果你服务器已经安装过Mysql数据库，可以跳过该步骤</span><br><span class="line">docker run --restart&#x3D;always --name mysqlmatomo -d \</span><br><span class="line">-p 3306:3306 \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;matomo123 \</span><br><span class="line">-e MYSQL_DATABASE&#x3D;matomo \</span><br><span class="line">-e MYSQL_USER&#x3D;matomo \</span><br><span class="line">-e MYSQL_PASSWORD&#x3D;matomo123 \</span><br><span class="line">-v ~&#x2F;matomo&#x2F;mysql:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">mysql:5.6</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后打开<code>ip:8080</code>即可访问。如果访问不了的话，可以查看上面的教程，开放端口即可。</p>
+<p>然后这里需要注意的是<code>Database Server</code>需要填上你的<code>ip</code>地址，而且数据库端口，比如<code>3306</code>需要防火墙放行，不然会连接不上。</p>
+<p>安装到最后一步的时候，如果你填的ip地址，那么可能进入不了，可以编辑<code>/root/matomo/data/config/config.ini.php</code> ，修改<code>trusted_hosts[]</code>参数为你的访问地址。</p>
+<p>最后配置该导航的话，需要修改配置文件<code>_data/analytics.yml</code>，大致参数如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#url为matomo站点，domain为导航站，site_id为matomo站点统计站id，token为matomo站点的token</span><br><span class="line">matomo:</span><br><span class="line">  url: http:&#x2F;&#x2F;matomo.moerats.com&#x2F;</span><br><span class="line">  domains:</span><br><span class="line">  - &quot;http:&#x2F;&#x2F;byr.moerats.com&quot;</span><br><span class="line">  site_id: 2</span><br><span class="line">  token: 297bd600834c2a5a70293c47a</span><br></pre></td></tr></table></figure>
+
+<p>参数获取大致路径如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、site_id</span><br><span class="line">在后台添加一个网站统计，就可以直接看到网站id</span><br><span class="line">2、token</span><br><span class="line">该参数可以在Settings里获取API Authentication Token</span><br></pre></td></tr></table></figure>
+
+<p>最后可能会出现跨域问题，导致配置统计后不生效，可以在通用设置中设置跨域资源共享(<code>CROS</code>)白名单域名，将导航站点添加进去即可。</p>
+<h2 id="部署到GitHub-Pages"><a href="#部署到GitHub-Pages" class="headerlink" title="部署到GitHub Pages"></a>部署到GitHub Pages</h2><p>这里部署到<code>GitHub Pages</code>的好处就是不需要服务器，但国内访问的话，有点影响体验，这个就自行选择了。</p>
+<p>首先你肯定需要一个<code>Github</code>账号，没有的可以去注册一个，地址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com</a>，有了账号就继续看。</p>
+<p><strong>1、配置Git SSH密钥</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以必须要让github仓库认证你SSH key，在操作之前，需要先在服务器上生成SSH key。</span><br></pre></td></tr></table></figure>
+
+<p>我们先去根目录下使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>这里会要你命名密匙名称(这里建议使用默认名称)，然后连续按几次<code>Enter</code>，这时候会在<code>/root/.ssh</code>文件夹生成<code>2</code>个<code>ssh</code>密钥，然后我们查看公钥<code>id_rsa.pub</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>查看后，再复制下公钥，然后打开<code>Github</code>官网，进入<a href="https://github.com/settings/ssh/new，`Title`随便填，然后`Key`填入刚刚复制的密匙，最后点击`Add" target="_blank" rel="noopener">https://github.com/settings/ssh/new，`Title`随便填，然后`Key`填入刚刚复制的密匙，最后点击`Add</a> SSH Key`添加即可。<br><a href="https://www.moerats.com/usr/picture/BYR-Navi(3).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/BYR-Navi(3).png" alt=""></a></p>
+<p><strong>2、建立仓库</strong><br>我们需要先访问<a href="https://github.com/new，新建一个仓库用来存放`BYR-Navi`站点文件，名称填`你的用户名.github.io`，仓库别加密，不然到时候就访问不到了。" target="_blank" rel="noopener">https://github.com/new，新建一个仓库用来存放`BYR-Navi`站点文件，名称填`你的用户名.github.io`，仓库别加密，不然到时候就访问不到了。</a><br><a href="https://www.moerats.com/usr/picture/BYR-Navi(4).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/BYR-Navi(4).png" alt=""></a></p>
+<p><strong>3、推送到Github</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#进入源码的_site文件夹</span><br><span class="line">cd &#x2F;root&#x2F;BYR-Navi&#x2F;_site</span><br><span class="line">#初始化你的github仓库</span><br><span class="line">git init</span><br><span class="line">#关联到远程github仓库，后面为仓库SSH地址，新建仓库后会返回给你该地址</span><br><span class="line">git remote add origin git@github.com:iiiiiii1&#x2F;iiiiiii1.github.io.git</span><br><span class="line">#把目录下所有文件更改状况提交到暂存区，包括增，删，改。</span><br><span class="line">git add -A</span><br><span class="line">#提交更改的说明，说明随意了，这里为push</span><br><span class="line">git commit -m &quot;push&quot;</span><br><span class="line">#开始推送到Github</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>推送的时候可能会提示<code>The authenticity of host &#39;github.com&#39; can&#39;t be established.</code>信息，直进<code>yes</code>即可。</p>
+<p>然后推送完就可以看到仓库的推送文件了。<br><a href="https://www.moerats.com/usr/picture/BYR-Navi(5).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/BYR-Navi(5).png" alt=""></a></p>
+<p>接下来访问<code>https://你的用户名.github.io</code>就可以进入导航网站了。</p>
+<p><strong>4、绑定域名</strong><br>有的可能不习惯用<code>github</code>的域名，这里可以绑定自己的域名。</p>
+<p>先解析域名的<code>CNAME</code>记录到你的<code>https://你的用户名.github.io</code>域名。如果你想用<code>Https</code>访问，可以使用<code>CloudFlare</code>解析域名，并开启<code>CDN</code>强制<code>Http</code>转<code>Https</code>。<br><a href="https://www.moerats.com/usr/picture/Github_blog(7).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Github_blog(7).png" alt=""></a><br>然后访问你的博客<code>Git</code>项目地址，点击<code>Create new file</code>新建文件，命名<code>CNAME</code>，内容写上你的域名，不要<code>http</code>等。<br><a href="https://www.moerats.com/usr/picture/Github_blog(6).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Github_blog(6).png" alt="请输入图片描述"></a><br>这时候就可以通过自己的域名访问导航站了，最后该程序定制啥的很灵活，想深度修改的话可以看下官方文档→<a href="https://www.jekyll.com.cn/docs/" target="_blank" rel="noopener">传送门</a>。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络资源</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">建站知识</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/建站知识//" class="article-tag-list-link color5">建站知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/27/BYR-Navi%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E3%80%81%E7%BE%8E%E8%A7%82%E4%B8%94%E5%8F%AF%E4%BB%A5%E9%83%A8%E7%BD%B2%E5%9C%A8GitHub%20Pages%E7%9A%84%E7%BD%91%E7%AB%99%E5%AF%BC%E8%88%AA%E7%A8%8B%E5%BA%8F/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一个功能强大的网址缩短程序：Polr搭建教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/26/%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%BC%BA%E5%A4%A7%E7%9A%84%E7%BD%91%E5%9D%80%E7%BC%A9%E7%9F%AD%E7%A8%8B%E5%BA%8F%EF%BC%9APolr%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" target="_blank">一个功能强大的网址缩短程序：Polr搭建教程</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/26/%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%BC%BA%E5%A4%A7%E7%9A%84%E7%BD%91%E5%9D%80%E7%BC%A9%E7%9F%AD%E7%A8%8B%E5%BA%8F%EF%BC%9APolr%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2019-09-26T05:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>说明：</strong>之前说过一个短网址程序。参考：<a href="https://www.moerats.com/archives/471/" target="_blank" rel="noopener">短网址程序YOURLS安装及配置教程与设置中文</a>，这里再说个<code>Polr</code>短网址程序，<code>Polr</code>是一个开源的短链接软件，也就是不存在收费的问题，而且功能也足够强大，由于官方的没有中文版本，所以就找了个<code>Polr</code> 中文优化版。</p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><a href="https://www.moerats.com/usr/picture/Polr(1).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Polr(1).png" alt=""></a><br><a href="https://www.moerats.com/usr/picture/Polr(4).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Polr(4).png" alt=""></a></p>
+<h2 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h2><ul>
+<li>修改缩短的域名</li>
+<li>统计功能(来源，时间)</li>
+<li><code>API</code>支持</li>
+<li>二维码生成</li>
+</ul>
+<h2 id="优化内容"><a href="#优化内容" class="headerlink" title="优化内容"></a>优化内容</h2><ul>
+<li>安装界面，使用界面中文化</li>
+<li>时区&amp;<code>CDN</code>获取<code>IP</code></li>
+</ul>
+<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p><strong>Github地址：</strong><a href="https://github.com/cydrobolt/polr" target="_blank" rel="noopener">https://github.com/cydrobolt/polr</a></p>
+<p><strong>1、安装Web环境</strong><br>我们可以用<code>lnmp</code>、<code>lamp</code>一键包或者宝塔之类的面板来搭建<code>web</code>环境。本教程以宝塔面板为例。<br><code>lnmp</code>安装方法可参考：<a href="https://www.moerats.com/archives/61/" target="_blank" rel="noopener">https://www.moerats.com/archives/61/</a><br>宝塔安装方法可看：<a href="https://www.bt.cn/Download/btsoftlinux.html" target="_blank" rel="noopener">https://www.bt.cn/Download/btsoftlinux.html</a></p>
+<p><strong>2、添加网站并下载程序</strong><br>添加域名，并进入网站根目录，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;www&#x2F;wwwroot&#x2F;xx.com</span><br><span class="line">#下载官方源码</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;cydrobolt&#x2F;polr.git</span><br><span class="line">mv polr&#x2F;&#123;.,&#125;* .&#x2F;</span><br><span class="line">#下载汉化文件</span><br><span class="line">cd resources &amp;&amp; rm -rf views &amp;&amp; wget https:&#x2F;&#x2F;www.moerats.com&#x2F;usr&#x2F;down&#x2F;porl_views.tar.gz</span><br><span class="line">tar zxvf porl_views.tar.gz</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+
+<p>如果汉化文件有问题的，可以参考该汉化地址：<a href="https://gitea.shiruihua.app/Quarter/polr_view_cn。" target="_blank" rel="noopener">https://gitea.shiruihua.app/Quarter/polr_view_cn。</a></p>
+<p>提示<code>git</code>未安装的，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#Debian和Ubuntu系统</span><br><span class="line">apt-get install git</span><br><span class="line">#CentOS系统</span><br><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、使用Composer安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#安装Composer</span><br><span class="line">curl -sS https:&#x2F;&#x2F;getcomposer.org&#x2F;installer | php</span><br><span class="line">mv composer.phar &#x2F;usr&#x2F;local&#x2F;bin&#x2F;composer</span><br><span class="line"></span><br><span class="line">#进入网站根目录运行</span><br><span class="line">composer install --no-dev -o</span><br></pre></td></tr></table></figure>
+
+<p><strong>4、编辑文件</strong><br>将<code>.env.setup</code>创建一个名为<code>.env</code>的副本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp .env.setup .env</span><br></pre></td></tr></table></figure>
+
+<p><strong>5、伪静态</strong><br>在宝塔面板上直接点击网站-设置-网站目录，选择<code>/public</code>文件夹，然后在伪静态那里填入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">            try_files $uri $uri&#x2F; &#x2F;index.php$is_args$args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再重启<code>Nginx</code>。最后进入<code>http://xx.com/setup</code>设置就可以了，如果打开出现错误，授权根目录所有文件就行了。<br><a href="https://www.moerats.com/usr/picture/Polr(2).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Polr(2).png" alt=""></a><br><a href="https://www.moerats.com/usr/picture/Polr(3).png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Polr(3).png" alt=""></a></p>
+<h2 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h2><p><strong>1、修改设置</strong><br>是的，你没看错设置仅能通过<code>.env</code>这个文件修改。</p>
+<p><strong>2、通过CDN获取真实IP</strong><br>若使用<code>Cloudflare</code>，请在<code>vender/autoload.php</code>的第<code>6</code>行加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (isset($_SERVER[&quot;HTTP_CF_CONNECTING_IP&quot;])) &#123;</span><br><span class="line">  $_SERVER[&#39;REMOTE_ADDR&#39;] &#x3D; $_SERVER[&quot;HTTP_CF_CONNECTING_IP&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他<code>CDN</code>请自行查找。</p>
+<p><strong>3、设置时区</strong><br>在<code>.env</code>文件的最后加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">APP_TIMEZONE&#x3D;Asia&#x2F;Shanghai</span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络资源</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">建站知识</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网站</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/建站知识//" class="article-tag-list-link color5">建站知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/26/%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%BC%BA%E5%A4%A7%E7%9A%84%E7%BD%91%E5%9D%80%E7%BC%A9%E7%9F%AD%E7%A8%8B%E5%BA%8F%EF%BC%9APolr%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一款支持Markdown语法的Wiki知识管理系统：Wikitten搭建教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/25/%E4%B8%80%E6%AC%BE%E6%94%AF%E6%8C%81Markdown%E8%AF%AD%E6%B3%95%E7%9A%84Wiki%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9AWikitten%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" target="_blank">一款支持Markdown语法的Wiki知识管理系统：Wikitten搭建教程</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/25/%E4%B8%80%E6%AC%BE%E6%94%AF%E6%8C%81Markdown%E8%AF%AD%E6%B3%95%E7%9A%84Wiki%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9AWikitten%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2019-09-25T05:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>Wikitten</code>是一款开源<code>Wiki</code>知识管理系统，使用<code>PHP</code>开发，支持<code>Markdown</code>语法，无需数据库，自动生成树形目录，适合用来做个人<code>Wiki</code>知识库。</p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><a href="https://www.moerats.com/usr/picture/Wikitten_in.png" target="_blank" rel="noopener"><img src="https://www.moerats.com/usr/picture/Wikitten_in.png" alt=""></a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><strong>环境要求：</strong><code>PHP &gt;= 5.3</code>，需要<code>Fileinfo</code>组建支持。</p>
+<p>搭建好<code>Web</code>环境，建议使用宝塔面板，教程：<a href="https://www.moerats.com/archives/254/" target="_blank" rel="noopener">宝塔面板安装教程</a>，然后进入后台再安装<code>PHP</code>和<code>Nginx</code>环境，再找到左侧软件管理-<code>PHP</code>管理-设置-安装<code>Fileinfo</code>拓展。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#如果Fileinfo拓展安装失败，就是内存太小，我们可以添加swap，不适用于ovz</span><br><span class="line">1、手动添加，方法查看：https:&#x2F;&#x2F;www.moerats.com&#x2F;archives&#x2F;19&#x2F;。</span><br><span class="line">2、面板添加，找到左侧软件管理-系统工具-安装Linux工具箱，然后进入工具箱添加。</span><br></pre></td></tr></table></figure>
+
+<p>接下来解析并添加域名，然后下载源码：<a href="https://github.com/victorstanciu/Wikitten/archive/master.zip" target="_blank" rel="noopener">Wikitten.zip</a>，再放到站点根目录并解压。将<code>config.php.example</code>重命名为<code>config.php</code>，根据实际情况修改或注释里面内容，配置文件说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#设置站点标题</span><br><span class="line">define(&#39;APP_NAME&#39;, &#39;My Wiki&#39;);</span><br><span class="line">#选择首页文件，必须位于library文件夹下（一般不需要修改）</span><br><span class="line">define(&#39;DEFAULT_FILE&#39;, &#39;index.md&#39;);</span><br><span class="line">#设置文档目录（一般不需要修改）</span><br><span class="line">define(&#39;LIBRARY&#39;, &#39;&#x2F;path&#x2F;to&#x2F;wiki&#x2F;library&#39;);</span><br><span class="line">#启用任何文件的页内编辑（不知道用来干嘛的，保持默认就行）</span><br><span class="line">define(&#39;ENABLE_EDITING&#39;, true);</span><br><span class="line">#启用JSON Front Matter(元数据)，可对文档设置title&#x2F;keywords等</span><br><span class="line">define(&#39;USE_PAGE_METADATA&#39;, true); </span><br><span class="line">#使用黑色主题</span><br><span class="line">define(&#39;USE_DARK_THEME&#39;, true);</span><br><span class="line">#是否显示左下角LOGO</span><br><span class="line">define(&#39;USE_WIKITTEN_LOGO&#39;, false);</span><br></pre></td></tr></table></figure>
+
+<p><code>Wikitten</code>需要伪静态支持，如果是<code>Apache</code>一般不需要修改，站点根目录已经内置<code>.htaccess</code>伪静态规则。如果是<code>Nginx</code>，请添加下面的配置到<code>server</code>段内，并重启<code>Nginx</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#宝塔面板找到左侧网站点击域名，直接在伪静态添入以下代码</span><br><span class="line">location ~* ^&#x2F;static&#x2F;(css|js|img|fonts)&#x2F;.+.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt|swf|pdf|txt|bmp|eot|svg|ttf|woff|woff2)$ &#123;</span><br><span class="line">    access_log off;</span><br><span class="line">    expires max;</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">    rewrite ^(.*)$ &#x2F;index.php last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后访问你的域名即可。</p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p><code>Wikitten</code>支持<code>Markdown</code>语法，直接将写好的<code>Markdown</code>文件存放到网站根目录<code>library</code>文件夹会自动生成树形结构。</p>
+<p><code>Wikitten</code>模板文件位于<code>views</code>目录，你可以适当修改，添加网站统计代码以及评论和一些个性化设置。</p>
+<p><strong>部分参考：</strong><a href="https://www.xiaoz.me/archives/9770" target="_blank" rel="noopener">使用Wikitten搭建自己的Wiki知识库</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络资源</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">建站知识</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Blog//" class="article-tag-list-link color5">Blog</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/25/%E4%B8%80%E6%AC%BE%E6%94%AF%E6%8C%81Markdown%E8%AF%AD%E6%B3%95%E7%9A%84Wiki%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9AWikitten%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-看够了自带-鼠标主题-？快换一个！鼠标主题推荐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/09/24/%E7%9C%8B%E5%A4%9F%E4%BA%86%E8%87%AA%E5%B8%A6-%E9%BC%A0%E6%A0%87%E4%B8%BB%E9%A2%98-%EF%BC%9F%E5%BF%AB%E6%8D%A2%E4%B8%80%E4%B8%AA%EF%BC%81%E9%BC%A0%E6%A0%87%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/" target="_blank">看够了自带[鼠标主题]？快换一个！鼠标主题推荐</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/09/24/%E7%9C%8B%E5%A4%9F%E4%BA%86%E8%87%AA%E5%B8%A6-%E9%BC%A0%E6%A0%87%E4%B8%BB%E9%A2%98-%EF%BC%9F%E5%BF%AB%E6%8D%A2%E4%B8%80%E4%B8%AA%EF%BC%81%E9%BC%A0%E6%A0%87%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/" class="archive-article-date">
+        <time datetime="2019-09-24T07:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>在Windows操作系统中，它首次用不同的指针来表示不同的状态，如：系统忙，移动中，选中等。</p>
+<p>我们日常最常见的鼠标指针主题肯定是系统自带的了，但是关于系统自带鼠标指针，也是很有意思的，比如：</p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_4286fd51_4124_5922@924x752.jpeg.m.jpg" alt="img"></p>
+<h3 id="百度百科"><a href="#百度百科" class="headerlink" title="百度百科"></a>百度百科</h3><blockquote>
+<p>鼠标的指针是不对称的。鼠标右边箭头的小短线是水平的，从而可以保证给用户的视觉感受不会太斜 ，因此，虽然箭头视觉设计不是完全对称的，但是基本保证了视觉上的舒适性。</p>
+</blockquote>
+<p>但不管怎么样，一个主题看久了必定会产生视觉疲劳，不如换一换鼠标主题吧！</p>
+<p>重新定义你的电脑系统，让你的电脑独一无二，并且在纷纷扰扰的环境中，给你带了一丝清新~</p>
+<h3 id="一些漂亮的主题"><a href="#一些漂亮的主题" class="headerlink" title="一些漂亮的主题:"></a>一些漂亮的主题:</h3><p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_5b6db3b7_4124_5924@595x450.jpeg.m.jpg" alt="img"></p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_0188e905_4124_5925@400x225.gif" alt="img"></p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_9cda8510_4124_5927@1080x608.jpeg.m.jpg" alt="img"></p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_f8c53d79_4124_5929@415x409.jpeg.m.jpg" alt="img"></p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_50845a82_4124_5931@190x267.jpeg.m.jpg" alt="img"></p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_e87068ec_4124_5932@210x202.jpeg.m.jpg" alt="img"></p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_6eea45b6_4124_5934@653x466.jpeg.m.jpg" alt="img"></p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_01e0a861_4129_7789@1068x561.jpeg.m.jpg" alt="img"></p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_837fecca_4129_7791@1080x608.jpeg.m.jpg" alt="img"></p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>下载的鼠标指针主题，解压后</p>
+<p>里面有一个*.inf的安装文件</p>
+<p>右键单击-安装即可：</p>
+<p><img src="http://image.coolapk.com/feed/2020/0316/10/3055264_51c13fd3_4129_7792@639x416.gif" alt="img"></p>
+<p>本文鼠标主题包源于: 致美化(免费的电脑美化)</p>
+<h3 id="我也给大家整理好了一些我觉得不错的鼠标主题"><a href="#我也给大家整理好了一些我觉得不错的鼠标主题" class="headerlink" title="我也给大家整理好了一些我觉得不错的鼠标主题:"></a>我也给大家整理好了一些我觉得不错的鼠标主题:</h3><p><a href="https://www.lanzous.com/b00tapy5e" target="_blank" rel="noopener">查看链接</a><br>密码:hbpw</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">软件</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">美化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">windows10</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/windows美化//" class="article-tag-list-link color5">windows美化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/09/24/%E7%9C%8B%E5%A4%9F%E4%BA%86%E8%87%AA%E5%B8%A6-%E9%BC%A0%E6%A0%87%E4%B8%BB%E9%A2%98-%EF%BC%9F%E5%BF%AB%E6%8D%A2%E4%B8%80%E4%B8%AA%EF%BC%81%E9%BC%A0%E6%A0%87%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -834,9 +1940,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

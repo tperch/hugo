@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>十分钟快速搭建内网穿透工具 —— frp | Hexo</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="简介 frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp，udp，http，https，stcp 协议。 frp 需要服务端和客户端共同作用，服务端为 frps，一般安装在 vps 服务器上；客户端为 frpc，一般安装在路由器或 NAS 上。 frps 和 frpc 配置使用，可以远程访问或控制内网设备。  frps 一键安装为了节省精力，这里使用 clangcn 的一键安装脚本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十分钟快速搭建内网穿透工具 —— frp">
+<meta property="og:url" content="http://yoursite.com/2020/01/15/%E5%8D%81%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7%20%E2%80%94%E2%80%94%20frp/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简介 frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp，udp，http，https，stcp 协议。 frp 需要服务端和客户端共同作用，服务端为 frps，一般安装在 vps 服务器上；客户端为 frpc，一般安装在路由器或 NAS 上。 frps 和 frpc 配置使用，可以远程访问或控制内网设备。  frps 一键安装为了节省精力，这里使用 clangcn 的一键安装脚本">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-14T19:41:58.000Z">
+<meta property="article:modified_time" content="2020-03-27T17:37:37.791Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="内网穿透">
+<meta property="article:tag" content="frp">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -183,459 +190,301 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-十分钟快速搭建内网穿透工具 —— frp" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/07/11/hello-world/" class="archive-article-date">
-        <time datetime="2020-07-11T07:57:40.286Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/07/11/hello-world/" target="_blank">Hello World</a>
   
+    <h1 class="article-title" itemprop="name">
+      十分钟快速搭建内网穿透工具 —— frp
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
 
+<a href="/2020/01/15/%E5%8D%81%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7%20%E2%80%94%E2%80%94%20frp/" class="archive-article-date">
+        <time datetime="2020-01-14T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-15</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">660字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><code>frp</code> 是一个可用于内网穿透的高性能的反向代理应用，支持 <code>tcp</code>，<code>udp</code>，<code>http</code>，<code>https</code>，<code>stcp</code> 协议。</li>
+<li><code>frp</code> 需要服务端和客户端共同作用，服务端为 <code>frps</code>，一般安装在 vps 服务器上；客户端为 <code>frpc</code>，一般安装在路由器或 NAS 上。</li>
+<li><code>frps</code> 和 <code>frpc</code> 配置使用，可以远程访问或控制内网设备。</li>
+</ul>
+<h2 id="frps-一键安装"><a href="#frps-一键安装" class="headerlink" title="frps 一键安装"></a>frps 一键安装</h2><p>为了节省精力，这里使用 <a href="https://github.com/clangcn/onekey-install-shell/tree/master/frps" target="_blank" rel="noopener">clangcn</a> 的一键安装脚本</p>
+<p>支持的平台：</p>
+<ul>
+<li>Centos 6/7 32/64bit</li>
+<li>Debian 6/7 32/64bit</li>
+<li>Ubuntu 14 32/64bit</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget --no-check-certificate https://raw.githubusercontent.com/clangcn/onekey-install-shell/master/frps/install-frps.sh -O ./install-frps.sh</span><br></pre></td></tr></table></figure>
+
+<p>修改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 700 ./install-frps.sh</span><br></pre></td></tr></table></figure>
+
+<p>开始安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./install-frps.sh install</span><br></pre></td></tr></table></figure>
+
+<p>安装过程选项的说明</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">说明</th>
+<th align="center">默认</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">download_url</td>
+<td align="center">frp 镜像源下载地址</td>
+<td align="center">aliyun</td>
+</tr>
+<tr>
+<td align="center">bind_port</td>
+<td align="center">frp 提供服务的端口</td>
+<td align="center">5443</td>
+</tr>
+<tr>
+<td align="center">vhost_http_port</td>
+<td align="center">http 服务端口</td>
+<td align="center">80</td>
+</tr>
+<tr>
+<td align="center">vhost_https_port</td>
+<td align="center">https 服务端口</td>
+<td align="center">443</td>
+</tr>
+<tr>
+<td align="center">dashboard_port</td>
+<td align="center">frps 仪表盘端口，用于查看 frp 工作状态</td>
+<td align="center">6443</td>
+</tr>
+<tr>
+<td align="center">dashboard_user</td>
+<td align="center">仪表盘登录账号</td>
+<td align="center">admin</td>
+</tr>
+<tr>
+<td align="center">dashboard_pwd</td>
+<td align="center">仪表盘登录密码</td>
+<td align="center">随机</td>
+</tr>
+<tr>
+<td align="center">token</td>
+<td align="center">frps 和 frpc 通讯密码</td>
+<td align="center">随机</td>
+</tr>
+<tr>
+<td align="center">max_pool_count</td>
+<td align="center">每个代理的连接上线</td>
+<td align="center">50</td>
+</tr>
+<tr>
+<td align="center">log_level</td>
+<td align="center">日志等级</td>
+<td align="center">info</td>
+</tr>
+<tr>
+<td align="center">log_max_days</td>
+<td align="center">日志保留天数</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">log_file</td>
+<td align="center">是否开启日志</td>
+<td align="center">enable</td>
+</tr>
+<tr>
+<td align="center">tcp_mux</td>
+<td align="center">是否开启多路复用，减少 tcp 的握手延迟</td>
+<td align="center">enable</td>
+</tr>
+<tr>
+<td align="center">kcp support</td>
+<td align="center">是否开启 kcp</td>
+<td align="center">enable</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意设置安全组或者防火墙</p>
+</blockquote>
+<h3 id="功能命令"><a href="#功能命令" class="headerlink" title="功能命令"></a>功能命令</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">frps start</td>
+<td align="center">启动</td>
+</tr>
+<tr>
+<td align="center">frps stop</td>
+<td align="center">停止</td>
+</tr>
+<tr>
+<td align="center">frps restart</td>
+<td align="center">重启</td>
+</tr>
+<tr>
+<td align="center">frps status</td>
+<td align="center">当前服务状态</td>
+</tr>
+<tr>
+<td align="center">frps config</td>
+<td align="center">vi 编辑配置</td>
+</tr>
+<tr>
+<td align="center">frps version</td>
+<td align="center">查看版本</td>
+</tr>
+<tr>
+<td align="center">install-frps.sh update</td>
+<td align="center">更新脚本</td>
+</tr>
+<tr>
+<td align="center">install-frps.sh uninstall</td>
+<td align="center">卸载</td>
+</tr>
+</tbody></table>
+<h2 id="fprc-配置"><a href="#fprc-配置" class="headerlink" title="fprc 配置"></a>fprc 配置</h2><p>客户端以 <code>Windows</code> 系统为例，路由器或者 NAS 的对照参考即可</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>在这里 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">frp</a> 下载对应 <code>frps</code> 的版本</p>
+<p>下载后只需要这三个文件即可</p>
+<ul>
+<li>frpc.exe</li>
+<li>frpc.ini</li>
+<li>frpc_full.ini</li>
+</ul>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>修改 <code>frpc.ini</code> 文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[common]</span></span><br><span class="line"><span class="string">server_addr</span> <span class="string">=</span> <span class="string">xxxxxx</span>    <span class="comment"># 服务器 IP</span></span><br><span class="line"><span class="string">server_port</span> <span class="string">=</span> <span class="number">5443</span>      <span class="comment"># bind_port</span></span><br><span class="line"><span class="string">token</span> <span class="string">=</span> <span class="string">xxxxxx</span>          <span class="comment"># 与服务器一致</span></span><br><span class="line"></span><br><span class="line"><span class="string">[test]</span></span><br><span class="line"><span class="string">type</span> <span class="string">=</span> <span class="string">http</span>             <span class="comment"># 类型</span></span><br><span class="line"><span class="string">local_ip</span> <span class="string">=</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>    <span class="comment"># 本地 IP</span></span><br><span class="line"><span class="string">local_port</span> <span class="string">=</span> <span class="number">80</span>         <span class="comment"># 本地端口</span></span><br><span class="line"><span class="string">use_encryption</span> <span class="string">=</span> <span class="literal">true</span>   <span class="comment"># 传输加密</span></span><br><span class="line"><span class="string">use_gzip</span> <span class="string">=</span> <span class="literal">true</span>         <span class="comment"># gzip 压缩</span></span><br><span class="line"><span class="string">custom_domains</span> <span class="string">=</span> <span class="string">xxxxxx</span> <span class="comment"># 自定义域名</span></span><br><span class="line"><span class="string">http_user</span> <span class="string">=</span> <span class="string">xxxxxx</span>      <span class="comment"># 可选，访问账号</span></span><br><span class="line"><span class="string">http_pwd</span> <span class="string">=</span> <span class="string">xxxxxx</span>       <span class="comment"># 可选，访问密码</span></span><br><span class="line"></span><br><span class="line"><span class="string">[test2]</span></span><br><span class="line"><span class="string">type</span> <span class="string">=</span></span><br><span class="line"><span class="string">local_ip</span> <span class="string">=</span></span><br><span class="line"><span class="string">local_port</span> <span class="string">=</span></span><br><span class="line"><span class="string">use_encryption</span> <span class="string">=</span></span><br><span class="line"><span class="string">use_gzip</span> <span class="string">=</span></span><br><span class="line"><span class="string">custom_domains</span> <span class="string">=</span></span><br><span class="line"><span class="string">http_user</span> <span class="string">=</span></span><br><span class="line"><span class="string">http_pwd</span> <span class="string">=</span></span><br><span class="line"></span><br><span class="line"><span class="string">log_file</span> <span class="string">=</span> <span class="string">/dev/null</span></span><br><span class="line"><span class="string">log_level</span> <span class="string">=</span> <span class="string">info</span></span><br><span class="line"><span class="string">log_max_days</span> <span class="string">=</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>打开 <code>cmd</code>，运行 <code>frpc.exe</code> 即可</p>
+<h2 id="Nginx-端口转发"><a href="#Nginx-端口转发" class="headerlink" title="Nginx 端口转发"></a>Nginx 端口转发</h2><p><code>80</code> 端口被 <code>Nginx</code> 占用的情况下，利用 <code>Nginx</code> 进行端口转发</p>
+<p>这里 <code>7080</code> 是 <code>frps</code> 的 <code>http</code> 服务端口</p>
+<p>添加站点文件 <code>test.conf</code>，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name www.cnguu.cn;</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">            proxy_pass http:&#x2F;&#x2F;127.0.0.1:7080;</span><br><span class="line">            proxy_redirect off;</span><br><span class="line">            proxy_set_header Host $host;</span><br><span class="line">            proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        &#125;</span><br><span class="line">        access_log off;</span><br><span class="line">        error_log &#x2F;dev&#x2F;null;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          John Doe
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://yoursite.com/2020/01/15/十分钟快速搭建内网穿透工具 —— frp/" title="十分钟快速搭建内网穿透工具 —— frp" target="_blank">http://yoursite.com/2020/01/15/十分钟快速搭建内网穿透工具 —— frp/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
   </div>
-</article>
-  
+  <div class="article-info article-info-index">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/07/11/%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5%EF%BC%8C%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E6%8E%8C%E6%8F%A12020%E5%B9%B4%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B0%E8%B6%8B%E5%8A%BF/" class="archive-article-date">
-        <time datetime="2020-07-11T07:50:03.491Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/07/11/%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E8%B7%B5%EF%BC%8C%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E6%8E%8C%E6%8F%A12020%E5%B9%B4%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B0%E8%B6%8B%E5%8A%BF/" target="_blank">从理论到实践，一篇文章带你掌握2020年的设计新趋势</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/24/%E6%9B%BE%E7%BB%8F%E8%A2%AB%E4%BD%A0%E5%BF%BD%E7%95%A5%E6%8E%89%E7%9A%84%E2%80%9C%E5%AD%A6%E4%B9%A0%E9%80%9A%E2%80%9D/" class="archive-article-date">
-        <time datetime="2020-01-23T19:50:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/24/%E6%9B%BE%E7%BB%8F%E8%A2%AB%E4%BD%A0%E5%BF%BD%E7%95%A5%E6%8E%89%E7%9A%84%E2%80%9C%E5%AD%A6%E4%B9%A0%E9%80%9A%E2%80%9D/" target="_blank">曾经被你忽略掉的“学习通”</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">交互设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">产品分析</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">学习通</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/产品分析//" class="article-tag-list-link color5">产品分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/22/Git%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%93%E6%A0%87%E7%AD%BE%E7%9A%84/" class="archive-article-date">
-        <time datetime="2020-01-21T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/22/Git%20%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%93%E6%A0%87%E7%AD%BE%E7%9A%84/" target="_blank">Git 是如何打标签的</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网页</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网穿透</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">frp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/22/WordPress%E6%89%93%E5%BC%80%E5%8F%98%E6%85%A2%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="archive-article-date">
-        <time datetime="2020-01-21T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/22/WordPress%E6%89%93%E5%BC%80%E5%8F%98%E6%85%A2%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_blank">WordPress打开变慢原因及解决办法</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WordPress</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/建站知识//" class="article-tag-list-link color5">建站知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/21/2019-2020%E4%BD%9C%E5%93%81%E9%9B%86/" class="archive-article-date">
-        <time datetime="2020-01-20T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/21/2019-2020%E4%BD%9C%E5%93%81%E9%9B%86/" target="_blank">2019-2020作品集</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">作品集</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">交互设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/作品集//" class="article-tag-list-link color4">作品集</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/21/HTML%20%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%BE%88%E5%85%A8%EF%BC%89/" class="archive-article-date">
-        <time datetime="2020-01-20T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/21/HTML%20%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%88%E5%BE%88%E5%85%A8%EF%BC%89/" target="_blank">HTML 基础篇（很全）</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/HTML//" class="article-tag-list-link color5">HTML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/18/WSL%20%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="archive-article-date">
-        <time datetime="2020-01-17T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/18/WSL%20%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_blank">WSL 下搭建前端开发环境</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网页</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">wsl</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -648,153 +497,114 @@
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/15/%E5%8D%81%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7%20%E2%80%94%E2%80%94%20frp/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/17/Git%20commit%20emoji%20%E9%A3%9F%E7%94%A8%E6%8C%87%E5%8D%97/" class="archive-article-date">
-        <time datetime="2020-01-16T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-17</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2020/01/15/CentOS7.6%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%20Git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CentOS7.6 编译安装最新版 Git
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/15/%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E6%9C%80%E5%96%9C%E7%88%B1%E7%9A%84%20Windows10%20%E2%80%94%E2%80%94%20%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E7%AF%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">打造自己最喜爱的 Windows10 —— 主题美化篇</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/17/Git%20commit%20emoji%20%E9%A3%9F%E7%94%A8%E6%8C%87%E5%8D%97/" target="_blank">Git commit emoji 食用指南</a>
-  
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网页</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/15/CentOS7.6%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%20Git/" class="archive-article-date">
-        <time datetime="2020-01-14T19:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/01/15/CentOS7.6%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%20Git/" target="_blank">CentOS7.6 编译安装最新版 Git</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网页</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+
+
 
 
           </div>
@@ -835,8 +645,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
